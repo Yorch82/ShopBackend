@@ -1,4 +1,4 @@
-const { User, Sequelize } = require('../models/index.js');
+const { User, Order, Product, Token, Sequelize } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config/config.json')['development'];
@@ -6,6 +6,7 @@ const { Op } = Sequelize;
 const transporter = require('../config/nodemailer');
 
 const UserController = {
+  //User create
   async create(req, res, next) {
     try {
       const hash = bcrypt.hashSync(req.body.password, 10);
@@ -35,6 +36,7 @@ const UserController = {
       next(error);
     }
   },
+  //Confirm user account
   async confirm(req, res) {
     try {
       const user = await User.update(
@@ -50,6 +52,7 @@ const UserController = {
       console.error(error);
     }
   },
+  //Login
   async login(req, res) {
     try {
       const user = await User.findOne({
@@ -80,6 +83,7 @@ const UserController = {
       res.status(401).send({ message: 'We had an issue checking the user...' });
     }
   },
+  //Logout
   async logout(req, res, next) {
     try {
       await Token.destroy({
@@ -96,6 +100,7 @@ const UserController = {
       next(error);
     }
   },
+  //Gets all products
   async getAll(req, res) {
     try {
       const users = await User.findAll({
@@ -110,6 +115,7 @@ const UserController = {
         .send({ mensaje: 'We had an issue searching the table...' });
     }
   },
+  //Gets the users info
   async getUserInfo(req, res) {
     try {
       const user = await User.findOne({
@@ -144,6 +150,7 @@ const UserController = {
         .send({ mensaje: 'We had an issue searching the user...' });
     }
   },
+  //Gets the user and their request
   async getUserOrderProduct(req, res, next) {
     try {
       const usersOrders = await User.findAll({
