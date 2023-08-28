@@ -25,6 +25,7 @@ app.use('/products', require('./routes/products'));
 app.use('/orders', require('./routes/orders'));
 app.use('/categories', require('./routes/categories'));
 app.use('/reviews', require('./routes/reviews'));
+app.use('/sections', require('./routes/sections'));
 
 app.listen(port, () => {
     logger.info('Server is running on ' + port);
