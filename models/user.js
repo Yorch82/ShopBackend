@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: {
             msg: 'Please insert a valid email adress',
           },
+          unique: true,
         },
       },
       confirmed: DataTypes.BOOLEAN,

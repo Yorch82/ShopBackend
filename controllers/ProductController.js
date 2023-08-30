@@ -11,7 +11,7 @@ const ProductController = {
     try {
       if (req.file) req.body.image_path = req.file.filename;
       const product = await Product.create({ ...req.body });
-      product.addOrder(req.body.OrderId);
+      product.addOrder(req.body.orderId);
       res.status(201).send({ message: 'Product added...', product });
     } catch (error) {
       error.origin = 'Product';
@@ -23,7 +23,7 @@ const ProductController = {
     try {
       const allproducts = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
       });
       res.status(201).send({ message: 'Search completed...', allproducts });
@@ -39,7 +39,7 @@ const ProductController = {
     try {
       const productsOrders = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         include: [
           {
@@ -69,7 +69,7 @@ const ProductController = {
         }
       );
       const product = await Product.findByPk(req.params.id);
-      product.setOrders(req.body.OrderId);
+      product.setOrders(req.body.orderId);
       res.status(201).send({ message: 'Product updated...' });
     } catch (error) {
       console.log(error);
@@ -96,7 +96,7 @@ const ProductController = {
     try {
       const productSectionCategory = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         include: [
           {
@@ -123,7 +123,7 @@ const ProductController = {
     try {
       const productById = await Product.findOne({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
 
         where: {
@@ -133,6 +133,10 @@ const ProductController = {
           {
             model: Review,
             attributes: ['review', 'rating'],
+          },
+          {
+            model: Category,
+            attributes: ['category'],
           },
         ],
       });
@@ -149,7 +153,7 @@ const ProductController = {
     try {
       const ProductByName = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         where: {
           product: req.params.product,
@@ -167,7 +171,7 @@ const ProductController = {
     try {
       const ProductByPrice = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         where: {
           price: req.params.price,
@@ -185,7 +189,7 @@ const ProductController = {
     try {
       const orderdedByPrice = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         order: [['price', 'DESC']],
       });

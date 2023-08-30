@@ -11,7 +11,7 @@ const OrderController = {
   async create(req, res, next) {
     try {
       const newOrder = {
-        UserId: req.user.id,
+        userId: req.user.id,
         date: new Date(),
         updatedAt: new Date(),
         createdAt: new Date(),
@@ -19,7 +19,7 @@ const OrderController = {
 
       const order = await Order.create(newOrder);
       req.body.productsId.forEach(async productId => {
-        await Order_Product.create({ ProductId: productId, OrderId: order.id });
+        await Order_Product.create({ productId: productId, OrderId: order.id });
       });
 
       res.status(201).send({ message: 'order added...', order });
@@ -60,7 +60,7 @@ const OrderController = {
     try {
       const ordersProduct = await Order.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'SectionId', 'CategoryId'],
+          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
         },
         include: [
           {

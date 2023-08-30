@@ -15,6 +15,7 @@ const UserController = {
         ...req.body,
         password: hash,
         confirmed: true,
+        image_path: '/assets/users/profile.jpg',
         //cambiado de false a true
         role: 'user',
       });
@@ -76,7 +77,7 @@ const UserController = {
           .send({ message: 'User or password incorrect...' });
       }
       token = jwt.sign({ id: user.id }, jwt_secret);
-      Token.create({ token: token, UserId: user.id });
+      Token.create({ token: token, userId: user.id });
       //res.send({ message: 'user logged...', user });
       res.send({ message: 'Bienvenid@' + user.name, user, token });
     } catch (error) {
@@ -89,12 +90,12 @@ const UserController = {
       await Token.destroy({
         where: {
           [Op.and]: [
-            { UserId: req.user.id },
+            { userId: req.user.id },
             { token: req.headers.authorization },
           ],
         },
       });
-      res.send({ message: 'User disconnected...' });
+      return res.send({ message: 'User disconnected...' });
     } catch (error) {
       error.origin = 'User';
       next(error);

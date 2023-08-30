@@ -69,10 +69,10 @@ const ReviewController = {
           exclude: [
             'createdAt',
             'updatedAt',
-            'SectionId',
-            'CategoryId',
-            'UserId',
-            'ProductId',
+            'sectionId',
+            'categoryId',
+            'userId',
+            'productId',
           ],
         },
         include: [
