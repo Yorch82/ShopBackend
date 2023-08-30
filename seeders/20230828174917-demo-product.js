@@ -7,7 +7,7 @@ module.exports = {
       {
         product: 'One Plus 10 Pro',
         price: 825,
-        oldprice: 975,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/oneplus10.png',
         sectionId: 1,
         categoryId: 1,
@@ -17,7 +17,7 @@ module.exports = {
       {
         product: 'Xiaomi MI 11 Lite',
         price: 289,
-        oldprice: 395,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/xiaomi11.png',
         sectionId: 1,
         categoryId: 2,
@@ -27,7 +27,7 @@ module.exports = {
       {
         product: 'Iphone 13',
         price: 815,
-        oldprice: 999,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/iphone13.png',
         sectionId: 1,
         categoryId: 1,
@@ -37,7 +37,7 @@ module.exports = {
       {
         product: 'One Plus Nord 2',
         price: 399,
-        oldprice: 575,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/OnePlusNord.png',
         sectionId: 1,
         categoryId: 2,
@@ -47,7 +47,7 @@ module.exports = {
       {
         product: 'Xiaomi Redmi 9',
         price: 175,
-        oldprice: 275,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/redmi9.png',
         sectionId: 1,
         categoryId: 3,
@@ -57,7 +57,7 @@ module.exports = {
       {
         product: 'Samsung Galaxy S22 ULTRA',
         price: 999,
-        oldprice: 1975,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/s22ultra.png',
         sectionId: 1,
         categoryId: 1,
@@ -67,7 +67,7 @@ module.exports = {
       {
         product: 'Apple Ipad Pro 12.9',
         price: 995,
-        oldprice: 1475,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/ipad12.png',
         sectionId: 2,
         categoryId: 1,
@@ -77,7 +77,7 @@ module.exports = {
       {
         product: 'Samsung Galaxy Tab',
         price: 1025,
-        oldprice: 1375,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/galaxytab.png',
         sectionId: 2,
         categoryId: 2,
@@ -87,7 +87,7 @@ module.exports = {
       {
         product: 'Xiaomi Pad 5 Pro',
         price: 553,
-        oldprice: 775,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/xiaomipad.png',
         sectionId: 2,
         categoryId: 2,
@@ -97,7 +97,7 @@ module.exports = {
       {
         product: 'Lenovo Yoga Tab 13',
         price: 499,
-        oldprice: 675,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/yogatab.png',
         sectionId: 2,
         categoryId: 2,
@@ -107,7 +107,7 @@ module.exports = {
       {
         product: 'Chuwi HiPad X',
         price: 160,
-        oldprice: 205,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/chuwi.png',
         sectionId: 2,
         categoryId: 3,
@@ -117,7 +117,7 @@ module.exports = {
       {
         product: 'HP OMEN 16-b0044',
         price: 1499,
-        oldprice: 1975,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/omen.png',
         sectionId: 4,
         categoryId: 1,
@@ -127,7 +127,7 @@ module.exports = {
       {
         product: 'MSI KATANA GF66',
         price: 1289,
-        oldprice: 1775,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/katana.png',
         sectionId: 4,
         categoryId: 1,
@@ -137,7 +137,7 @@ module.exports = {
       {
         product: 'Asus Zenbook 14',
         price: 899,
-        oldprice: 1075,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/zenbook.png',
         sectionId: 4,
         categoryId: 2,
@@ -147,7 +147,7 @@ module.exports = {
       {
         product: 'Lenovo IdeaPad 5',
         price: 699,
-        oldprice: 875,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/ideapad5.png',
         sectionId: 4,
         categoryId: 2,
@@ -157,7 +157,7 @@ module.exports = {
       {
         product: 'Lenovo IdeaPad 3',
         price: 569,
-        oldprice: 775,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/ideapad3.png',
         sectionId: 4,
         categoryId: 3,
@@ -167,7 +167,7 @@ module.exports = {
       {
         product: 'Apple Watch series 7 ',
         price: 459,
-        oldprice: 675,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/watch7.png',
         sectionId: 3,
         categoryId: 1,
@@ -177,7 +177,7 @@ module.exports = {
       {
         product: 'Garmin Fenix 6',
         price: 379,
-        oldprice: 575,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/garmin.png',
         sectionId: 3,
         categoryId: 1,
@@ -187,7 +187,7 @@ module.exports = {
       {
         product: 'Xiaomi mIband 6',
         price: 39,
-        oldprice: 75,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/miband.png',
         sectionId: 3,
         categoryId: 3,
@@ -197,7 +197,7 @@ module.exports = {
       {
         product: 'Samsung Galaxy Watch 4',
         price: 175,
-        oldprice: 375,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/galaxywatch.png',
         sectionId: 3,
         categoryId: 2,
@@ -207,7 +207,7 @@ module.exports = {
       {
         product: 'Xiaomi Redmi Watch 2',
         price: 59,
-        oldprice: 95,
+        description: 'Phasellus dui ipsum, tempor sed odio pretium, consectetur malesuada quam. Sed dictum lectus dui, et interdum ipsum volutpat non. Nulla mollis a lectus ac venenatis.',
         image_path: '/assets/products/redmiwatch.png',
         sectionId: 3,
         categoryId: 3,

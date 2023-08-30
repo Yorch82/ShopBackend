@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Product.belongsTo(models.Category);
       Product.belongsTo(models.Section);
-      Product.belongsToMany(models.Order, { through: 'Order_Product' });
+      Product.hasMany(models.Order_Product);
       Product.hasMany(models.Review);
     }
   }
@@ -35,9 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    oldprice: {
-      type: DataTypes.FLOAT,
-    },
+    description: DataTypes.STRING(255),
     image_path: {
       type: DataTypes.STRING,
     },

@@ -23,7 +23,7 @@ const ProductController = {
     try {
       const allproducts = await Product.findAll({
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
+          exclude: ['createdAt', 'updatedAt'],
         },
       });
       res.status(201).send({ message: 'Search completed...', allproducts });

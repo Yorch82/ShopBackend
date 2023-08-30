@@ -15,8 +15,8 @@ module.exports = {
       price: {
         type: Sequelize.FLOAT
       },
-      oldprice: {
-        type: Sequelize.FLOAT
+      description: {
+        type: Sequelize.STRING
       },
       image_path: {
         type: Sequelize.STRING

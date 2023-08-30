@@ -15,6 +15,14 @@ module.exports = {
       productId: {
         type: Sequelize.INTEGER
       },
+      quantity: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      price: {
+        allowNull: false,
+        type: Sequelize.FLOAT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

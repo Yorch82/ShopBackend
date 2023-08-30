@@ -127,7 +127,7 @@ const UserController = {
         include: [
           {
             model: Order,
-            attributes: ['order_num'],
+            attributes: ['order_num','date'],
             include: [
               {
                 model: Product,
