@@ -28,5 +28,5 @@ app.use('/reviews', require('./routes/reviews'));
 app.use('/sections', require('./routes/sections'));
 
 app.listen(port, () => {
-    logger.info('Server is running on ' + port);
+  logger.info('Server is running on ' + port);
 });

@@ -1,12 +1,12 @@
 const { User, Token, Sequelize } = require('../models');
 const { Op } = Sequelize;
 const jwt = require('jsonwebtoken');
-const { jwt_secret } = require('../config/config.json')['development'];
+require("dotenv").config();
 
 const authentication = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
-    const payload = jwt.verify(token, jwt_secret);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findByPk(payload.id);
     const tokenFound = await Token.findOne({
       where: {

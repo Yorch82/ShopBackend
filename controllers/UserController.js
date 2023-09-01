@@ -1,7 +1,8 @@
 const { User, Order, Product, Token, Sequelize } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { jwt_secret } = require('../config/config.json')['development'];
+require("dotenv").config();
+const { jwt_secret } = process.env.JWT_SECRET
 const { Op } = Sequelize;
 const transporter = require('../config/nodemailer');
 
@@ -205,12 +206,18 @@ const UserController = {
         { where: { id: req.user.id }, }
       );
 
-      if (result) {
-        return res.send({ message: "User updated successfully" });
+      const user = await User.findOne({
+        where: {
+          id: req.user.id,
+        },
+      });
+
+      if (result) {        
+        return res.status(201).send({ message: "User updated successfully", user });
       } else {
         return res.send({ message: "Can't update user" });
       }
-    } catch (error) {
+    } catch (err) {
       err.origin = "User Update";
       next(err);
     }
