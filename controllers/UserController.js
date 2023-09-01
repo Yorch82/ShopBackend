@@ -2,7 +2,6 @@ const { User, Order, Product, Token, Sequelize } = require('../models/index.js')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
-const { jwt_secret } = process.env.JWT_SECRET
 const { Op } = Sequelize;
 const transporter = require('../config/nodemailer');
 
@@ -77,7 +76,7 @@ const UserController = {
           .status(400)
           .send({ message: 'User or password incorrect...' });
       }
-      token = jwt.sign({ id: user.id }, jwt_secret);
+      token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
       Token.create({ token: token, userId: user.id });
       //res.send({ message: 'user logged...', user });
       res.send({ message: 'Bienvenid@' + user.name, user, token });
