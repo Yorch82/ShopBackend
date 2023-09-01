@@ -1,20 +1,24 @@
-const Multer = require('multer');
-const mimetypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
-const generateUploadImageMulter = path => Multer({
-    storage: Multer.diskStorage({
-        destination: (req, file, cb) => cb(null, path),
-        filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
-    }),
-    fileFilter: (req, file, cb) => {
-        if (mimetypes.includes(file.mimetype)) cb(null, true)
-        else cb(null, false)
+const multer = require('multer');
+const path = require('path');
+
+const storageAvatar = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/assets/users/')
     },
-    limits: { fileSize: 2 * 1024 * 1024 }
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+    }
 });
-const uploadProductsImages = generateUploadImageMulter('./assets/products');
-// const uploadUserImages = generateUploadImageMulter('./images/users');
+const uploadUserImages = multer({ storage: storageAvatar });
 
+const storageImg = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/assets/products/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+    }
+});
+const uploadProductsImages = multer({ storage: storageImg });
 
-
-
-module.exports = { uploadProductsImages /*uploadUserImages*/};
+module.exports = { uploadUserImages, uploadProductsImages };
