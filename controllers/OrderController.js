@@ -5,6 +5,9 @@ const {
   Section,
   Order_Product,
 } = require('../models/index');
+require('dotenv').config();
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 //Create order
 const OrderController = {
@@ -19,8 +22,16 @@ const OrderController = {
       };
 
       const order = await Order.create(newOrder);
-      req.body.productsId.forEach(async productId => {
-        await Order_Product.create({ productId: productId, orderId: order.id });
+      req.body.products.forEach(async product => {
+        const productPrice = await Product.findOne({
+          where: { id: product.id },
+        });
+        await Order_Product.create({
+          productId: product.id,
+          orderId: order.id,
+          quantity: product.count,
+          price: productPrice.price,
+        });
       });
 
       res.status(201).send({ message: 'order added...', order });
@@ -28,6 +39,72 @@ const OrderController = {
       console.log(error);
       error.origin = 'Order';
       next(error);
+    }
+  },
+
+  async checkout(req, res) {
+    try {
+      const lineItems = await Promise.all(
+        req.body.products.map(async (product) => {
+          const item = await Product.findOne({
+            where: { id: product.id },
+          });
+      
+          return {
+            price_data: {
+              currency: "eur",
+              product_data: {
+                name: item.product,
+              },
+              unit_amount: item.price * 100,
+            },
+            quantity: product.count,
+          };
+        })
+      );
+
+      // create a stripe session
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        customer_email: req.body.email,
+        mode: 'payment',
+        success_url: 'http://localhost:3000/checkout/success',
+        cancel_url: 'http://localhost:3000',
+        line_items: lineItems,
+      });
+
+      // Redirect url
+      res.json({url: session.url});
+
+      // create the item
+      
+      // const newOrder = {
+      //   userId: req.user.id,
+      //   date: new Date(),
+      //   order_num: Math.random() * 100000,
+      //   updatedAt: new Date(),
+      //   createdAt: new Date(),
+      // };
+
+      // const order = await Order.create(newOrder);
+      // req.body.products.forEach(async product => {
+      //   const productPrice = await Product.findOne({
+      //     where: { id: product.id },
+      //   });
+      //   await Order_Product.create({
+      //     productId: product.id,
+      //     orderId: order.id,
+      //     quantity: product.count,
+      //     price: productPrice.price,
+      //   });
+      // });
+      
+      //return session id
+      return { id: session.id };
+    } catch (error) {
+      res
+        .status(500)
+        .send({ mensaje: 'There was a problem creating the charge.' , error});
     }
   },
 
@@ -50,16 +127,16 @@ const OrderController = {
     try {
       const allorders = await Order.findAll({
         where: {
-          userId: req.user.id
+          userId: req.user.id,
         },
         include: [
           {
             model: Order_Product,
-            attributes: ["id", "quantity", "price"],
+            attributes: ['id', 'quantity', 'price'],
             include: [
               {
                 model: Product,
-                attributes: ["id", "product"],
+                attributes: ['id', 'product'],
               },
             ],
           },

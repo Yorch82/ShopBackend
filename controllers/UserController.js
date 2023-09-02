@@ -76,9 +76,9 @@ const UserController = {
           .status(400)
           .send({ message: 'User or password incorrect...' });
       }
-      token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-      Token.create({ token: token, userId: user.id });
-      //res.send({ message: 'user logged...', user });
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+      await Token.create({ token, userId: user.id });
+
       res.send({ message: 'Bienvenid@' + user.name, user, token });
     } catch (error) {
       res.status(401).send({ message: 'We had an issue checking the user...' });
