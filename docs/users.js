@@ -31,4 +31,42 @@ module.exports = {
         },
       },
     },
+    "/users/login": {
+      post: {
+        tags: ["Users"],
+        description: "Connect the user",
+        summary: 'User Log In',
+        operationId: "userLogin",
+        parameters: [],
+        requestBody: {
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/userLogin",
+              },
+            },
+          },
+        },
+        responses: {
+          201: { description: "User connected successfully" },
+          404: { description: "User not found" },
+          500: { description: "Server error" },
+        },
+      },
+    },
+    "/users/logout": {
+      delete: {
+        security: [{ ApiKeyAuth: [] }],
+        tags: ["Users"],
+        description: "Disconnect the user",
+        summary: 'User Log Out',
+        operationId: "userLogout",
+        parameters: [],
+        responses: {
+          200: { description: "User disconnected..." },
+          404: { description: "User not found" },
+          500: { description: "Server error" },
+        },
+      },
+    },
 }
