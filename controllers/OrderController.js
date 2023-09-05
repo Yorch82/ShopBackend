@@ -5,8 +5,8 @@ const {
   Section,
   Order_Product,
 } = require('../models/index');
-require('dotenv').config();
 
+require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 //Create order

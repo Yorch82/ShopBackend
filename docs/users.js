@@ -68,5 +68,20 @@ module.exports = {
           500: { description: "Server error" },
         },
       },
+  },
+  "/users/info": {
+    get: {
+      security: [{ ApiKeyAuth: [] }],
+      tags: ["Users"],
+      description: "Get users info with products and orders",
+      summary: 'User Info',
+      operationId: "getUserInfo",
+      parameters: [],
+      responses: {
+        200: { description: "User find" },
+        404: { description: "User or Password incorrect" },
+        500: { description: "We had an issue searching the user..." },
+      },
     },
+  },
 }

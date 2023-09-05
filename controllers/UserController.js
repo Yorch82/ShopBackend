@@ -1,4 +1,4 @@
-const { User, Order, Product, Token, Sequelize } = require('../models/index.js');
+const { User, Order, Product, Token, Order_Product, Sequelize } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
@@ -127,14 +127,7 @@ const UserController = {
         include: [
           {
             model: Order,
-            attributes: ['order_num','date'],
-            include: [
-              {
-                model: Product,
-                attributes: ['product', 'price', 'image_path'],
-                through: { attributes: [] },
-              },
-            ],
+            attributes: ['order_num','date'],            
           },
         ],
       });
