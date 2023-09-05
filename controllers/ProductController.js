@@ -34,29 +34,6 @@ const ProductController = {
         .send({ message: 'We had an issue searching the products...' });
     }
   },
-  //Gets the product next to the order to which it belongs
-  async getProductOrder(req, res) {
-    try {
-      const productsOrders = await Product.findAll({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
-        },
-        include: [
-          {
-            model: Order,
-            through: { attributes: [] },
-            attributes: ['id'],
-          },
-        ],
-      });
-      res.status(201).send({ message: 'Show relations', productsOrders });
-    } catch (error) {
-      res
-        .status(500)
-        .send({ message: ' We had a problem updating the product...' });
-    }
-  },
-
   //Update products by ID
   async updateProduct(req, res, next) {
     try {
@@ -147,63 +124,8 @@ const ProductController = {
         .status(500)
         .send({ message: ' We had a problem searching the product...' });
     }
-  },
-  //Show product by name
-  async getProductByName(req, res) {
-    try {
-      const ProductByName = await Product.findAll({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
-        },
-        where: {
-          product: req.params.product,
-        },
-      });
-      res.status(201).send({ message: 'Product found...', ProductByName });
-    } catch (error) {
-      res
-        .status(500)
-        .send({ message: ' We had a problem searching the product...' });
-    }
-  },
-  //Show product by price
-  async getProductByPrice(req, res) {
-    try {
-      const ProductByPrice = await Product.findAll({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
-        },
-        where: {
-          price: req.params.price,
-        },
-      });
-      res.status(201).send({ message: 'Product found...', ProductByPrice });
-    } catch (error) {
-      res
-        .status(500)
-        .send({ message: ' We had a problem searching the product...' });
-    }
-  },
-  //Sort products by price from highest to lowest
-  async productOrderedByPrice(req, res) {
-    try {
-      const orderdedByPrice = await Product.findAll({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
-        },
-        order: [['price', 'DESC']],
-      });
-      res
-        .status(201)
-        .send({ message: 'Product ordered by price...', orderdedByPrice });
-    } catch (error) {
-      res
-        .status(500)
-        .send({
-          message: ' We had a problem ordering the product by price...',
-        });
-    }
-  },
+  },  
+ 
 };
 
 module.exports = ProductController;
