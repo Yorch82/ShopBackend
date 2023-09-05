@@ -48,7 +48,7 @@ const UserController = {
           },
         }
       );
-      res.status(201).send('Usuario confirmado con exito');
+      res.status(201).send('Usuario confirmed succesfully');
     } catch (error) {
       console.error(error);
     }
@@ -157,9 +157,9 @@ const UserController = {
             attributes: ['order_num'],
             include: [
               {
-                model: Product,
-                attributes: ['product', 'price'],
-                through: { attributes: [] },
+                model: Order_Product,
+                attributes: ['orderId', 'productId','quantity'],
+               
               },
             ],
           },
