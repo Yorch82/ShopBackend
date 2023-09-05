@@ -646,6 +646,38 @@ module.exports = {
           }
         }
       },
+      create: {
+        type: 'integer',
+        properties: {
+          orderId: {
+            type: 'tinteger',
+            description: 'order ID',
+            example: 1,
+            required: true
+          },
+          productId: {
+            type: 'integer',
+            description: 'Product ID',
+            example: 1,
+            required: true,
+          },          
+        }
+      },
+      getAllSections: {
+        type: 'integer',
+        properties: {
+          id: {
+            type: 'integer',
+            description: 'Section ID',
+            example: 1,
+          },
+          section: {
+            type: 'string',
+            description: 'Section name',
+            example: "Mobile",   
+          },          
+        }
+      },
     }
   }
 }
