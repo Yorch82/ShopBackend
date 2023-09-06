@@ -1,10 +1,11 @@
 module.exports = {
     '/sections': {
-      post: {
+    post: {
+        security: [{ ApiKeyAuth: [] }],
         tags: ['Sections'],
         summary: 'Create new section',
         description: 'Create new section',
-        operationId: 'create',
+        operationId: 'createSection',
         parameters: [],
         requestBody: {
           content: {

@@ -61,40 +61,7 @@ const ReviewController = {
       error.origin = 'Review';
       next(error);
     }
-  },
-  async getReviewUserProduct(req, res) {
-    try {
-      const ReviewUserProduct = await Review.findAll({
-        attributes: {
-          exclude: [
-            'createdAt',
-            'updatedAt',
-            'sectionId',
-            'categoryId',
-            'userId',
-            'productId',
-          ],
-        },
-        include: [
-          {
-            model: User,
-            attributes: ['name', 'surname'],
-          },
-          {
-            model: Product,
-            attributes: ['product', 'price'],
-          },
-        ],
-      });
-      res
-        .status(201)
-        .send({ message: 'Search completed...', ReviewUserProduct });
-    } catch (error) {
-      res
-        .status(500)
-        .send({ message: ' We had a problem searching the reviews...' });
-    }
-  },
+  },  
 };
 
 module.exports = ReviewController;

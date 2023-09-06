@@ -150,34 +150,7 @@ const OrderController = {
         .send({ mensaje: 'We had a problem looking for all Orders' });
     }
   },
-  async getOrderProduct(req, res) {
-    try {
-      const ordersProduct = await Order.findAll({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'sectionId', 'categoryId'],
-        },
-        include: [
-          {
-            model: Product,
-            through: { attributes: [] },
-            attributes: ['product', 'price'],
-            include: [
-              {
-                model: Section,
-                attributes: ['section'],
-              },
-            ],
-          },
-        ],
-      });
-      res.status(201).send({ message: 'Show relations', ordersProduct });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .send({ message: ' We had a problem looking for relations' });
-    }
-  },
+  
 };
 
 module.exports = OrderController;
