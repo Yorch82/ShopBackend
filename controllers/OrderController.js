@@ -68,8 +68,8 @@ const OrderController = {
         payment_method_types: ['card'],
         customer_email: req.body.email,
         mode: 'payment',
-        success_url: 'http://localhost:3000/checkout/success',
-        cancel_url: 'http://localhost:3000',
+        success_url: `${process.env.STRIPE_SECRET_KEY}checkout/success`,
+        cancel_url: `${process.env.STRIPE_SECRET_KEY}`,
         line_items: lineItems,
       });
 
