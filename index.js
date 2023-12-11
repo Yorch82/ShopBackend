@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = 8080;
 const cors = require('cors');
 const { typeError } = require('./middlewares/errors');
 const swaggerUI = require('swagger-ui-express');
